@@ -50,8 +50,8 @@ namespace JET.Entities
         public Boolean IsOpenNowForDelivery { get; set; }
         public Boolean IsOpenNowForCollection { get; set; }
         public Int32 RatingStars { get; set; }
-        public Logo Logo { get; set; }
-        public IEnumerable<Deal> Deals { get; set; }
+        public Dictionary<string,string> Logo { get; set; }
+        public Dictionary<string, string> Deals { get; set; }
 
         public Int32 NumberOfRatings { get; set; }
     }

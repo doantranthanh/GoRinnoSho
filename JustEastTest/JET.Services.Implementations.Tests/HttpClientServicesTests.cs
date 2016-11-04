@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using JET.Entities;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
 using NUnit.Framework;

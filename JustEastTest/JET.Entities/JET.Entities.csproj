@@ -42,8 +42,6 @@
   <ItemGroup>
     <Compile Include="Badge.cs" />
     <Compile Include="CuisineType.cs" />
-    <Compile Include="Deal.cs" />
-    <Compile Include="Logo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant.cs" />
     <Compile Include="Tag.cs" />
