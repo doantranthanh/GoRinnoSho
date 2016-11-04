@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using JET.Services.Implementations.WebClient;
+using JET.Services.Interfaces.WebClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using JET.WebApi.Filter;
@@ -12,6 +14,7 @@ namespace JET.WebApi
         {
             // Dependency Resolver
             var container = new UnityContainer();
+            container.RegisterType<IHttpClientService, HttpClientService>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API configuration and services
