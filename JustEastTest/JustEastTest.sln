@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JET.UnityDependency", "JET.UnityDependency\JET.UnityDependency.csproj", "{9C38D246-B15E-4169-876C-DE6129745473}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JET.Web.Tests", "JET.Web.Tests\JET.Web.Tests.csproj", "{BDCE6906-AC2C-4194-9CF6-D4D40E9B6700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JET.Web", "JET.Web\JET.Web.csproj", "{18ABFC20-FCB3-49DA-A361-E6AE7B85E4DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9C38D246-B15E-4169-876C-DE6129745473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C38D246-B15E-4169-876C-DE6129745473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C38D246-B15E-4169-876C-DE6129745473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCE6906-AC2C-4194-9CF6-D4D40E9B6700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCE6906-AC2C-4194-9CF6-D4D40E9B6700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCE6906-AC2C-4194-9CF6-D4D40E9B6700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCE6906-AC2C-4194-9CF6-D4D40E9B6700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18ABFC20-FCB3-49DA-A361-E6AE7B85E4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18ABFC20-FCB3-49DA-A361-E6AE7B85E4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18ABFC20-FCB3-49DA-A361-E6AE7B85E4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18ABFC20-FCB3-49DA-A361-E6AE7B85E4DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
