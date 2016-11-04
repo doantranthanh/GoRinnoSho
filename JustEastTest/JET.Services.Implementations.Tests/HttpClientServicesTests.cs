@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Web.Http;
 using JET.Entities;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
@@ -56,5 +58,40 @@ namespace JET.Services.Implementations.Tests
             Assert.AreEqual(baseAddress.AbsoluteUri, uriAddress);
         }
 
+        [Test]
+        [TestCase("https://public.je-apis.com/")]
+        public void When_Gettting_All_Restaurants_They_Should_Be_Returned(string uriAddress)
+        {
+            // Arrange
+            var restaurants = new []
+            {
+                new Restaurant()
+                {
+                    Id = 1,
+                    City = "London",
+                    Postcode = "CR85NG"
+                },
+                new Restaurant()
+                {
+                    Id = 2,
+                    City = "London",
+                    Postcode = "SW112SE"
+                }
+            };
+
+            var testingHandler = new TestingDelegatingHandler<Restaurant[]>(restaurants);
+
+            var server = new HttpServer(new HttpConfiguration(), testingHandler);
+
+            var client = new HttpClientService(new HttpClient(server));
+            client.SetBaseAddress(uriAddress);
+
+            // Act
+            var restaurantsReturned = client.GetResultsAsyns<Restaurant>();
+
+            // Assert
+
+            Assert.AreEqual(2, restaurantsReturned.Count());
+        }
     }
 }

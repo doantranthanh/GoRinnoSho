@@ -12,7 +12,7 @@ namespace JET.Services.Implementations.WebClient
 
         public HttpClientService(HttpClient httpClient)
         {
-            if(_httpClient == null)
+            if(httpClient == null)
                 throw new ArgumentNullException("httpClient");
 
             _httpClient = httpClient;
