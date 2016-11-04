@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JET.Services.Interfaces.WebClient
 {
     public interface IHttpClientService
     {
-        Uri GetBaseAddress(string uriAddress);
+        Uri SetBaseAddress(string uriAddress);
+        void ClearDefaultHeader();
+        void AddValidRequestHeader(string name, string value);
+
+        IEnumerable<T> GetResultsAsyns<T>();
+        T GetResultAsyns<T>();
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using JET.Services.Interfaces.WebClient;
 
 namespace JET.Services.Implementations.WebClient
@@ -11,16 +8,52 @@ namespace JET.Services.Implementations.WebClient
     public class HttpClientService : IHttpClientService
     {
 
-        private readonly HttpClient _client;
+        private readonly HttpClient _httpClient;
 
-        public HttpClientService()
+        public HttpClientService(HttpClient httpClient)
         {
-            _client = new HttpClient();
+            if(_httpClient == null)
+                throw new ArgumentNullException("httpClient");
+
+            _httpClient = httpClient;
         }
 
-        public Uri GetBaseAddress(string uriAddress)
+        public HttpClient GetCurrent
         {
-            return _client.BaseAddress = new Uri(uriAddress);
+            get {return _httpClient; }
+        }
+
+
+        public Uri BaseUrl { get; private set; }
+
+        public Uri SetBaseAddress(string uriAddress)
+        {
+            BaseUrl = new Uri(uriAddress);
+            return _httpClient.BaseAddress = BaseUrl;
+        }
+
+        public void ClearDefaultHeader()
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+        }
+
+        public void AddValidRequestHeader(string name, string value)
+        {
+            _httpClient.DefaultRequestHeaders.Add(name, value);
+        }
+
+        public IEnumerable<T> GetResultsAsyns<T>()
+        {
+            var response = _httpClient.GetAsync(BaseUrl).Result;
+            response.EnsureSuccessStatusCode();         
+            return response.Content.ReadAsAsync<T[]>().Result;
+        }
+
+        public T GetResultAsyns<T>()
+        {
+            var response = _httpClient.GetAsync(BaseUrl).Result;
+            response.EnsureSuccessStatusCode();
+            return response.Content.ReadAsAsync<T>().Result;
         }
     }
 }
