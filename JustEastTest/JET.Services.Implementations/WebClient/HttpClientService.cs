@@ -7,7 +7,7 @@ using JET.Services.Interfaces.WebClient;
 
 namespace JET.Services.Implementations.WebClient
 {
-    public class HttpClientService: IHttpClientService
+    public class HttpClientService : IHttpClientService
     {
     }
 }
