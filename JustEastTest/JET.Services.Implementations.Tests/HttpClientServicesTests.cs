@@ -53,6 +53,6 @@ namespace JET.Services.Implementations.Tests
             Assert.IsInstanceOf<Uri>(baseAddress);
             Assert.AreEqual(baseAddress.AbsoluteUri, uriAddress);
         }
-       
+
     }
 }
