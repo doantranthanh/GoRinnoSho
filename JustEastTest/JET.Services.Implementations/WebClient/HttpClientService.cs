@@ -42,16 +42,16 @@ namespace JET.Services.Implementations.WebClient
             _httpClient.DefaultRequestHeaders.Add(name, value);
         }
 
-        public IEnumerable<T> GetResultsAsyns<T>()
+        public IEnumerable<T> GetResultsAsyns<T>(string queryString)
         {
-            var response = _httpClient.GetAsync(BaseUrl).Result;
+            var response = _httpClient.GetAsync(queryString).Result;
             response.EnsureSuccessStatusCode();         
             return response.Content.ReadAsAsync<T[]>().Result;
         }
 
-        public T GetResultAsyns<T>()
+        public T GetResultAsyns<T>(string queryString)
         {
-            var response = _httpClient.GetAsync(BaseUrl).Result;
+            var response = _httpClient.GetAsync(queryString).Result;
             response.EnsureSuccessStatusCode();
             return response.Content.ReadAsAsync<T>().Result;
         }

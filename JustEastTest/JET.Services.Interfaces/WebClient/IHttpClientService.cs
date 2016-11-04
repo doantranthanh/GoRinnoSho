@@ -9,7 +9,7 @@ namespace JET.Services.Interfaces.WebClient
         void ClearDefaultHeader();
         void AddValidRequestHeader(string name, string value);
 
-        IEnumerable<T> GetResultsAsyns<T>();
-        T GetResultAsyns<T>();
+        IEnumerable<T> GetResultsAsyns<T>(string queryString);
+        T GetResultAsyns<T>(string queryString);
     }
 }

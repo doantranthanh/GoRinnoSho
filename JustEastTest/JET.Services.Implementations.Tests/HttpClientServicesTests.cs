@@ -45,7 +45,7 @@ namespace JET.Services.Implementations.Tests
         {
             var ex = Assert.Throws<ArgumentNullException>(() => new HttpClientService(null));
             Assert.That(ex.Message, Is.StringContaining("Value cannot be null"));
-            Assert.That(ex.ParamName, Is.StringContaining("client"));
+            Assert.That(ex.ParamName, Is.StringContaining("httpClient"));
         }
 
         [Test]
@@ -59,8 +59,8 @@ namespace JET.Services.Implementations.Tests
         }
 
         [Test]
-        [TestCase("https://public.je-apis.com/")]
-        public void When_Gettting_All_Restaurants_They_Should_Be_Returned(string uriAddress)
+        [TestCase("https://public.je-apis.com/", "q=cr8&c=&name=")]
+        public void When_Gettting_All_Restaurants_They_Should_Be_Returned(string uriAddress, string queryString)
         {
             // Arrange
             var restaurants = new []
@@ -87,7 +87,7 @@ namespace JET.Services.Implementations.Tests
             client.SetBaseAddress(uriAddress);
 
             // Act
-            var restaurantsReturned = client.GetResultsAsyns<Restaurant>();
+            var restaurantsReturned = client.GetResultsAsyns<Restaurant>(queryString);
 
             // Assert
 
