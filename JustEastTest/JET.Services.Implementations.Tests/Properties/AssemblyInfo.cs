@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JET.WebApi.Tests")]
+[assembly: AssemblyTitle("JET.Services.Implementations.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JET.WebApi.Tests")]
+[assembly: AssemblyProduct("JET.Services.Implementations.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("51e665b4-f2f5-42a8-ac15-f11107583544")]
+[assembly: Guid("4e6db20f-1136-4fa5-a15a-a6497bee0585")]
 
 // Version information for an assembly consists of the following four values:
 //
