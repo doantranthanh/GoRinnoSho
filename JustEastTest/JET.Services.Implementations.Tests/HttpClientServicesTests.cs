@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
 using NUnit.Framework;
@@ -14,26 +15,25 @@ namespace JET.Services.Implementations.Tests
         [SetUp]
         public void SetUp()
         {
-            
+            _httpClientServices = new RhinoAutoMocker<HttpClientService>();
         }
 
 
         [Test]
         public void Existing_HttpClientService()
         {
-            _httpClientServices = new RhinoAutoMocker<HttpClientService>();
-            Assert.IsNotNull(_httpClientServices);
-            Assert.IsInstanceOf<IHttpClientService>(_httpClientServices);
+            var mockHttpClientServices = new HttpClientService();
+            Assert.IsNotNull(mockHttpClientServices);
+            Assert.IsInstanceOf<IHttpClientService>(mockHttpClientServices);
         }
 
         [Test]
         [TestCase("https://public.je-apis.com/")]
         public void Should_GetBaseAddress_Successfully(string uriAddress)
-        {
-            _httpClientServices = new RhinoAutoMocker<HttpClientService>();
-            _httpClientServices.ClassUnderTest.BaseAddress(uriAddress);
-            Assert.IsNotNull(_httpClientServices);
-            Assert.IsInstanceOf<IHttpClientService>(_httpClientServices);
+        {         
+            var baseAddress = _httpClientServices.ClassUnderTest.GetBaseAddress(uriAddress);
+            Assert.IsNotNull(baseAddress);
+            Assert.IsInstanceOf<Uri>(baseAddress);
         }
     }
 }

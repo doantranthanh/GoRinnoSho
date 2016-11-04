@@ -8,5 +8,6 @@ namespace JET.Services.Interfaces.WebClient
 {
     public interface IHttpClientService
     {
+        Uri GetBaseAddress(string uriAddress);
     }
 }
