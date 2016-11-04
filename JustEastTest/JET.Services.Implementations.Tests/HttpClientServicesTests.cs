@@ -65,13 +65,13 @@ namespace JET.Services.Implementations.Tests
             // Arrange
             var restaurants = new []
             {
-                new Restaurant()
+                new Restaurant
                 {
                     Id = 1,
                     City = "London",
                     Postcode = "CR85NG"
                 },
-                new Restaurant()
+                new Restaurant
                 {
                     Id = 2,
                     City = "London",
