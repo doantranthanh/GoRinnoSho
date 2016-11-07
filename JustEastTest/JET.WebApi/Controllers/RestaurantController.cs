@@ -11,12 +11,10 @@ namespace JET.WebApi.Controllers
     [RoutePrefix("api")]
     public class RestaurantController : ApiController
     {
-
         private const string JustEastUriAddress = "https://public.je-apis.com/restaurants";
-
         [Route("restaurant/{postcode}/{cuisine?}/{restaurantName?}")]
         [HttpGet]
-        public HttpResponseMessage GetRestaurants(string postcode = null, string cuisine = null, string restaurantName = null)
+        public HttpResponseMessage GetRestaurants(string postcode = "", string cuisine = "", string restaurantName = "")
         {
             Result restaurantsReturned;
             using (var client = UnityDependencyContainer.GetCurrent().Resolve<IHttpClientService>())
