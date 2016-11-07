@@ -29,4 +29,4 @@
     }
 
     app.controller('restaurantController', ['$scope', 'restaurantService', '$sessionStorage', '$location', '$window', productOptionsController]);
-})(angular.module('justEastTesting'));
+})(angular.module('jet'));
