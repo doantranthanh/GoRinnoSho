@@ -4,11 +4,11 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
           .when('/restaurants/details/v1', {
-              templateUrl: '/signuponline/Spa/Templates/productOptionsMainPage.html',
-              controller: 'productOptionsController'
+              templateUrl: 'Spa/Templates/detailsV1.html',
+              controller: 'reastaurantController'
           }).when('/restaurants/details/v2', {
-              templateUrl: '/signuponline/Spa/Templates/yourOrderMainPage.html',
-              controller: 'yourOrderController'
+              templateUrl: 'Spa/Templates/detailsV2.html',
+              controller: 'reastaurantControllerV2'
           }).otherwise({
               redirectTo: '/'
           });
@@ -22,8 +22,6 @@
         $rootScope.config = {};
         $rootScope.config.app_url = $location.url();
         $rootScope.config.app_path = $location.path();
-        $rootScope.layout = {};
-        $rootScope.layout.loading = false;
 
         $rootScope.$on('$routeChangeStart', function () {
             $window.scrollTo(0, 0);

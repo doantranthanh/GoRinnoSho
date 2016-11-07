@@ -15,13 +15,14 @@ namespace JET.Web
 
             string[] spaMainApp =
             {
-
+                "~/Spa/App/app.js"
             };
 
 
             string[] spaModules =
             {
-
+                "~/Spa/Modules/common.core.js",
+                "~/Spa/Modules/common.ui.js",
             };
 
             string[] spaServices =
@@ -53,7 +54,7 @@ namespace JET.Web
             bundles.Add(new ScriptBundle("~/bundles/application")
                 .Include(commonJsBundles)
                 .Include(spaMainApp)
-                .Include(spaModules));              
+                .Include(spaModules));
 
             //directives
             bundles.Add(new ScriptBundle("~/bundles/spa")
