@@ -4,6 +4,7 @@ using System.Web.Http;
 using JET.Entities;
 using JET.Services.Interfaces.WebClient;
 using JET.UnityDependency;
+using Microsoft.Practices.Unity;
 
 namespace JET.WebApi.Controllers
 {

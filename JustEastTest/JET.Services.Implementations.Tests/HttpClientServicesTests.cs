@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
+using System.Web.Http;
 using JET.Entities;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using StructureMap.AutoMocking;
 
 namespace JET.Services.Implementations.Tests
 {
     [TestFixture]
-    public class HttpClientServicesTests
+    public class HttpClientServicesTests 
     {
         private RhinoAutoMocker<HttpClientService> _httpClientServices;
 
@@ -72,18 +74,27 @@ namespace JET.Services.Implementations.Tests
                 }
             };
 
-            var testingHandler = new TestingDelegatingHandler<Restaurant[]>(restaurants);
-
-            using (var client = new HttpClientService())
+            var mockResult = new Result()
             {
-                client.SetBaseAddress(uriAddress);
+                Restaurants = restaurants
+            };
 
-                // Act
-                var restaurantsReturned = client.GetResultsAsyns<Restaurant>(queryString);
+            var testingHandler = new TestingDelegatingHandler<Result>(mockResult);
 
-                // Assert
+            using (var server = new HttpServer(new HttpConfiguration(), testingHandler))
+            {        
+                using (var client = new HttpClient(server))
+                {
+                    client.BaseAddress= new Uri(uriAddress);
+                    // Act
+                    var response = client.GetAsync(queryString).Result;
+                    response.EnsureSuccessStatusCode();
+                    var content = response.Content.ReadAsStringAsync().Result;
+                    var result = JsonConvert.DeserializeObject<Result>(content);
+                    // Assert
 
-                Assert.AreEqual(2, restaurantsReturned.Count());
+                    Assert.AreEqual(2, result.Restaurants.Count());
+                }
             }
         }
     }

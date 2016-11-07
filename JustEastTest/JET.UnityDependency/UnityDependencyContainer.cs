@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Microsoft.Practices.Unity;
 
 namespace JET.UnityDependency
@@ -33,7 +35,7 @@ namespace JET.UnityDependency
             }
 
             return _instance;
-        }
+        }     
 
         public T Resolve<T>()
         {
@@ -49,7 +51,7 @@ namespace JET.UnityDependency
         {
             return _container.Resolve(type);
         }
-
+        
         public void Register<TFrom, TTo>(bool isTransient = false) where TTo : TFrom
         {
             if (isTransient)

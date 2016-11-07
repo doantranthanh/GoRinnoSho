@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Net.Http;
+using System.Web.Http;
+using System.Web.Mvc;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
 using JET.UnityDependency;
@@ -30,7 +32,7 @@ namespace JET.WebApi
 
         public static void RegisterTypes(IUnityContainer container)
         {
-            UnityDependencyContainer.GetCurrent().Register<IHttpClientService, HttpClientService>(true);        
+            UnityDependencyContainer.GetCurrent().Register<IHttpClientService, HttpClientService>(true);
         }
     }
 }

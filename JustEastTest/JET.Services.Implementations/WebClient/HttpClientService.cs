@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Http;
 using JET.Services.Interfaces.WebClient;
 using Newtonsoft.Json;
 
@@ -9,19 +10,16 @@ namespace JET.Services.Implementations.WebClient
 {
     public class HttpClientService : IHttpClientService
     {
-
         private readonly HttpClient _httpClient;
 
         public HttpClientService()
         {
-            _httpClient = new HttpClient();
+            _httpClient = new HttpClient(); 
         }
-
         public HttpClient GetCurrent
         {
-            get {return _httpClient; }
+            get { return _httpClient; }
         }
-
 
         public Uri BaseUrl { get; private set; }
 
@@ -43,7 +41,7 @@ namespace JET.Services.Implementations.WebClient
 
         public void AddAuthorizationHeader(string type, string value)
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(type,value);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(type, value);
         }
 
         public void AddValidRequestHeader(string name, string value)
@@ -55,7 +53,7 @@ namespace JET.Services.Implementations.WebClient
         {
             var response = _httpClient.GetAsync(queryString).Result;
             response.EnsureSuccessStatusCode();
-            var content = response.Content.ReadAsStringAsync().Result;       
+            var content = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<List<T>>(content);
         }
 
@@ -69,7 +67,7 @@ namespace JET.Services.Implementations.WebClient
 
         public void Dispose()
         {
-            _httpClient.Dispose();    
+            _httpClient.Dispose();
         }
     }
 }
