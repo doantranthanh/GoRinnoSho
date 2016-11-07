@@ -139,10 +139,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Js\lib\angular\angular-messages.js" />
+    <Content Include="Js\lib\angular\angular-mocks.js" />
+    <Content Include="Js\lib\angular\angular-route.js" />
+    <Content Include="Js\lib\angular\angular-sanitize.js" />
+    <Content Include="Js\lib\angular\angular.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="SPA\App\app.js" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -175,11 +181,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Js\lib\" />
     <Folder Include="Js\spec\" />
     <Folder Include="Js\src\" />
     <Folder Include="Models\" />
-    <Folder Include="SPA\" />
+    <Folder Include="SPA\Controllers\" />
+    <Folder Include="SPA\Filters\" />
+    <Folder Include="SPA\Modules\" />
+    <Folder Include="SPA\Services\" />
+    <Folder Include="SPA\Templates\" />
     <Folder Include="Views\Shared\Partials\" />
   </ItemGroup>
   <PropertyGroup>
