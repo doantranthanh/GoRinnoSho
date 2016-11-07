@@ -27,12 +27,13 @@ namespace JET.Web
 
             string[] spaServices =
             {
-
+                "~/Spa/Services/apiService.js",
+                "~/Spa/Services/restaurantService.js"
             };
 
             string[] spaControllers =
             {
-
+                 "~/Spa/Controllers/restaurantController.js",
             };
 
             string[] spaDirectives =
