@@ -14,9 +14,9 @@ namespace JET.WebApi.Controllers
 
         private const string JustEastUriAddress = "https://public.je-apis.com/restaurants";
 
-        [Route("restaurant/{stringQuery}")]
+        [Route("restaurant/{postcode}/{cuisine?}/{restaurantName?}")]
         [HttpGet]
-        public HttpResponseMessage GetRestaurants(string stringQuery = null)
+        public HttpResponseMessage GetRestaurants(string postcode = null, string cuisine = null, string restaurantName = null)
         {
             Result restaurantsReturned;
             using (var client = UnityDependencyContainer.GetCurrent().Resolve<IHttpClientService>())
@@ -29,7 +29,7 @@ namespace JET.WebApi.Controllers
                 client.AddValidRequestHeader("Accept-Language", "en-GB");
                 client.AddValidRequestHeader("Accept-Charset", "utf-8");
                 client.AddValidRequestHeader("Host", "public.je-apis.com");
-                restaurantsReturned = client.GetResultAsyns<Result>("?q=" + stringQuery);
+                restaurantsReturned = client.GetResultAsyns<Result>("?q=" + postcode + "&c="+ cuisine + "&name="+ restaurantName);
             }
            
             if (restaurantsReturned == null)

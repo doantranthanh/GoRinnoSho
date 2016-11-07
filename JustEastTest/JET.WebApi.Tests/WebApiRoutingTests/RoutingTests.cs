@@ -20,12 +20,13 @@ namespace JET.WebApi.Tests.WebApiRoutingTests
         }
 
         [Test]
-        [TestCase("cr85ng")]
-        public void GetRestaurants_WithCorrectRoute_CallsAppropriateMethod(string stringQuery)
+        [TestCase("cr85ng", "", "")]
+        [TestCase("cr85ng", null, null)]
+        public void GetRestaurants_WithCorrectRoute_CallsAppropriateMethod(string postcode,string cuisine,string restaurantName)
         {
-            const string route = "/api/restaurant/q=cr8&c=&name=";
+            var route = "/api/restaurant/"+ postcode + "/" + cuisine + "/"  + restaurantName;
             RouteAssert.HasApiRoute(_httpConfiguration, route, HttpMethod.Get);
-            _httpConfiguration.ShouldMap(route).To<RestaurantController>(HttpMethod.Get, x => x.GetRestaurants(stringQuery));
+            _httpConfiguration.ShouldMap(route).To<RestaurantController>(HttpMethod.Get, x => x.GetRestaurants(postcode, cuisine, restaurantName));
         }
     }  
 }
