@@ -20,5 +20,10 @@
     <main id="main" role="main" class="main">
         @RenderBody()
     </main>
+    @Scripts.Render("~/bundles/application")
+    @Scripts.Render("~/bundles/spa")
+    @Scripts.Render("~/bundles/helpers")
 </body>
 </html>
+
+@RenderSection("masterscript", false)
