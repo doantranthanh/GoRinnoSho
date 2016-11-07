@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using JET.Services.Interfaces.WebClient;
+using Newtonsoft.Json;
 
 namespace JET.Services.Implementations.WebClient
 {
@@ -10,12 +12,9 @@ namespace JET.Services.Implementations.WebClient
 
         private readonly HttpClient _httpClient;
 
-        public HttpClientService(HttpClient httpClient)
+        public HttpClientService()
         {
-            if(httpClient == null)
-                throw new ArgumentNullException("httpClient");
-
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
         }
 
         public HttpClient GetCurrent
@@ -37,6 +36,16 @@ namespace JET.Services.Implementations.WebClient
             _httpClient.DefaultRequestHeaders.Accept.Clear();
         }
 
+        public void SetAcceptDefaultHeader(string responseContentType)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(responseContentType));
+        }
+
+        public void AddAuthorizationHeader(string type, string value)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(type,value);
+        }
+
         public void AddValidRequestHeader(string name, string value)
         {
             _httpClient.DefaultRequestHeaders.Add(name, value);
@@ -45,15 +54,22 @@ namespace JET.Services.Implementations.WebClient
         public IEnumerable<T> GetResultsAsyns<T>(string queryString)
         {
             var response = _httpClient.GetAsync(queryString).Result;
-            response.EnsureSuccessStatusCode();         
-            return response.Content.ReadAsAsync<T[]>().Result;
+            response.EnsureSuccessStatusCode();
+            var content = response.Content.ReadAsStringAsync().Result;       
+            return JsonConvert.DeserializeObject<List<T>>(content);
         }
 
         public T GetResultAsyns<T>(string queryString)
         {
             var response = _httpClient.GetAsync(queryString).Result;
             response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsAsync<T>().Result;
+            var content = response.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<T>(content);
+        }
+
+        public void Dispose()
+        {
+            _httpClient.Dispose();    
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Web.Http;
 using JET.Entities;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
@@ -26,7 +24,7 @@ namespace JET.Services.Implementations.Tests
         [Test]
         public void Existing_HttpClientService()
         {
-            var mockHttpClientServices = new HttpClientService(new HttpClient());
+            var mockHttpClientServices = new HttpClientService();
             Assert.IsNotNull(mockHttpClientServices);
             Assert.IsInstanceOf<IHttpClientService>(mockHttpClientServices);
         }
@@ -34,19 +32,14 @@ namespace JET.Services.Implementations.Tests
         [Test]
         public void Should_Return_Client_When_GetCurrent_Called()
         {
-            var mockHttpClientServices = new HttpClientService(new HttpClient());
-            var resutl = mockHttpClientServices.GetCurrent;
-            Assert.IsNotNull(resutl);
-            Assert.IsInstanceOf<HttpClient>(resutl);
+            using (var mockHttpClientServices = new HttpClientService())
+            {
+                var resutl = mockHttpClientServices.GetCurrent;
+                Assert.IsNotNull(resutl);
+                Assert.IsInstanceOf<HttpClient>(resutl);
+            }
         }
 
-        [Test]
-        public void Should_Throws_ArgumentException_If_HttpClient_Is_Null()
-        {
-            var ex = Assert.Throws<ArgumentNullException>(() => new HttpClientService(null));
-            Assert.That(ex.Message, Is.StringContaining("Value cannot be null"));
-            Assert.That(ex.ParamName, Is.StringContaining("httpClient"));
-        }
 
         [Test]
         [TestCase("https://public.je-apis.com/")]
@@ -81,17 +74,17 @@ namespace JET.Services.Implementations.Tests
 
             var testingHandler = new TestingDelegatingHandler<Restaurant[]>(restaurants);
 
-            var server = new HttpServer(new HttpConfiguration(), testingHandler);
+            using (var client = new HttpClientService())
+            {
+                client.SetBaseAddress(uriAddress);
 
-            var client = new HttpClientService(new HttpClient(server));
-            client.SetBaseAddress(uriAddress);
+                // Act
+                var restaurantsReturned = client.GetResultsAsyns<Restaurant>(queryString);
 
-            // Act
-            var restaurantsReturned = client.GetResultsAsyns<Restaurant>(queryString);
+                // Assert
 
-            // Assert
-
-            Assert.AreEqual(2, restaurantsReturned.Count());
+                Assert.AreEqual(2, restaurantsReturned.Count());
+            }
         }
     }
 }

@@ -3,35 +3,39 @@ using System.Net.Http;
 using System.Web.Http;
 using JET.Entities;
 using JET.Services.Interfaces.WebClient;
+using JET.UnityDependency;
 
 namespace JET.WebApi.Controllers
 {
     [RoutePrefix("api")]
     public class RestaurantController : ApiController
     {
-        private readonly IHttpClientService _httpClientService;
-        private const string JustEastUriAddress = "https://public.je-apis.com/";
 
-        public RestaurantController(IHttpClientService httpClientService)
-        {
-            _httpClientService = httpClientService;
-            _httpClientService.SetBaseAddress(JustEastUriAddress);
-        }
+        private const string JustEastUriAddress = "https://public.je-apis.com/restaurants";
 
-        [Route("restaurant/{queryString}")]
+        [Route("restaurant/{stringQuery}")]
         [HttpGet]
-        public HttpResponseMessage GetRestaurants(string queryString = null)
+        public HttpResponseMessage GetRestaurants(string stringQuery = null)
         {
-            _httpClientService.ClearDefaultHeader();
-            _httpClientService.AddValidRequestHeader("Accept-Tenant", "uk");
-            _httpClientService.AddValidRequestHeader("Authorization", "Basic VGVjaFRlc3RBUEk6dXNlcjI=");
-            _httpClientService.AddValidRequestHeader("Accept-Version", "1");
-            var restaurantsReturned = _httpClientService.GetResultsAsyns<Restaurant>(queryString);
+            Result restaurantsReturned;
+            using (var client = UnityDependencyContainer.GetCurrent().Resolve<IHttpClientService>())
+            {
+                client.SetBaseAddress(JustEastUriAddress);
+                client.ClearDefaultHeader();
+                client.SetAcceptDefaultHeader("application/json");
+                client.AddAuthorizationHeader("Basic", "VGVjaFRlc3RBUEk6dXNlcjI=");
+                client.AddValidRequestHeader("Accept-Tenant", "uk");
+                client.AddValidRequestHeader("Accept-Language", "en-GB");
+                client.AddValidRequestHeader("Accept-Charset", "utf-8");
+                client.AddValidRequestHeader("Host", "public.je-apis.com");
+                restaurantsReturned = client.GetResultAsyns<Result>("?q=" + stringQuery);
+            }
+           
             if (restaurantsReturned == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
-            return Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned);
+            return Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned.Restaurants);
         }
     }
 }

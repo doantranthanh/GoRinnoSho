@@ -12,11 +12,7 @@ namespace JET.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Dependency Resolver
-            var container = new UnityContainer();
-            container.RegisterType<IHttpClientService, HttpClientService>(new HierarchicalLifetimeManager());
-            config.DependencyResolver = new UnityResolver(container);
-
+          
             // Web API configuration and services
             var formatters = GlobalConfiguration.Configuration.Formatters;
             var jsonFormatter = formatters.JsonFormatter;

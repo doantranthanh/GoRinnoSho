@@ -20,7 +20,7 @@ namespace JET.WebApi.Tests.WebApiRoutingTests
         }
 
         [Test]
-        [TestCase("q=cr8&c=&name=")]
+        [TestCase("cr85ng")]
         public void GetRestaurants_WithCorrectRoute_CallsAppropriateMethod(string stringQuery)
         {
             const string route = "/api/restaurant/q=cr8&c=&name=";
