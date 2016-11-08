@@ -74,6 +74,14 @@ namespace JET.Web
 
 
             // CSS BUNDLES
+
+            string[] mainCssBundles =
+            {
+                "~/../Content/css/jet.css"
+            };
+
+            bundles.Add(new StyleBundle("~/bundles/jetMain")
+            .Include(mainCssBundles));
         }
 
 

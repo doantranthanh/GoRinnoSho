@@ -1,0 +1,9 @@
+/* line 1, components/_result.scss */
+table {
+  border-collapse: collapse;
+}
+
+/* line 5, components/_result.scss */
+table, th, td {
+  border: 1px solid black;
+}

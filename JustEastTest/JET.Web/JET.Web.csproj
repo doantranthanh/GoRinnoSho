@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <IsCompassProject>True</IsCompassProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -131,6 +132,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\ie.css" />
+    <Content Include="Content\css\jet.css">
+      <DependentUpon>jet.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\css\print.css" />
+    <Content Include="Content\css\screen.css" />
     <Content Include="Js\lib\angular\angular-messages.js" />
     <Content Include="Js\lib\angular\angular-mocks.js" />
     <Content Include="Js\lib\angular\angular-route.js" />
@@ -161,6 +168,10 @@
     <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="config.rb" />
+    <Content Include="Content\css\_settings.scss" />
+    <Content Include="Content\css\jet.scss" />
+    <Content Include="Content\css\components\_result.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,6 +201,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\css\core\" />
+    <Folder Include="Content\img\" />
     <Folder Include="Js\spec\" />
     <Folder Include="Js\src\" />
     <Folder Include="Models\" />

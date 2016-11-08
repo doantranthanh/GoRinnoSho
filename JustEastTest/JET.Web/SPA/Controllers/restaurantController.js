@@ -15,6 +15,7 @@
         function getRestaurantDetailsCompleted(response) {
             $scope.loading = false;
             $scope.restaurants = response.data;
+            console.log(response.data);
         }
 
        

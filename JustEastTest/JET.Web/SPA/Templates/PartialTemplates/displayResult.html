@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿<table style="border: 1px;">
+    <tr ng-repeat="restaurant in restaurants">
+        <td>Restaurant Name: {{restaurant.name}}</td>
+        <td>Rating Average: {{restaurant.ratingAverage}}</td>
+        <td ng-repeat="foodType in restaurant.cuisineTypes">
+            <ul>
+                <li>Food Type: {{foodType.name}}</li>
+               
+            </ul>        
+        </td>
+    </tr>
+</table>
 
-</body>
-</html>
