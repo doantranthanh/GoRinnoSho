@@ -40,5 +40,11 @@ namespace JET.Services.Implementations.WebStore
                 return (T)_cache.Get(key);
             return default(T);
         }
+
+        public void RemoveCacheObj(string key)
+        {
+            key = FormatKey(key);
+            _cache.Remove(key);
+        }
     }
 }

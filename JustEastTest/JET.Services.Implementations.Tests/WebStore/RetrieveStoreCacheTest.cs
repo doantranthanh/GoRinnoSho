@@ -21,9 +21,18 @@ namespace JET.Services.Implementations.Tests.WebStore
         {
             ObjectCache cache = MemoryCache.Default;
             _cacheHelper.StoreObjToCache("key", "jet testing");
-            var obj = _cacheHelper.RetrieveCacheObj<string>("key");
+            var obj = _cacheHelper.RetrieveCachedObj<string>("key");
             Assert.AreEqual("jet testing", obj);
             cache.Remove("key");
+        }
+
+        [Test]
+        public void TestStoreAnObjectToCache()
+        {
+            _cacheHelper.StoreObjToCache("a key", "a string");
+            var obj = _cacheHelper.RetrieveCachedObj<string>("a key");
+            Assert.AreEqual("a string", obj);
+            _cacheHelper.RemoveCacheObj("a key");
         }
     }
 }

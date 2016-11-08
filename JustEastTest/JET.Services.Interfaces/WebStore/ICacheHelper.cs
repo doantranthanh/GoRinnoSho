@@ -8,6 +8,8 @@
 
         void StoreObjToCacheInHour(string key, object value, int hour);
 
-        T RetrieveCacheObj<T>(string key);
+        T RetrieveCachedObj<T>(string key);
+
+        void RemoveCacheObj(string key);
     }
 }
