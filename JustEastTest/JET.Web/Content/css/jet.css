@@ -9,6 +9,6 @@ table, th, td {
 }
 
 /* line 9, components/_result.scss */
-.display-no-result, .form__note has-error {
+.display-no-result, .has-error {
   color: #d15119;
 }
