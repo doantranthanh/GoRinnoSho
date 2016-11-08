@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using JET.Services.Interfaces.WebStore;
+using NUnit.Framework;
 
 namespace JET.Services.Implementations.Tests.WebStore
 {
@@ -6,5 +7,11 @@ namespace JET.Services.Implementations.Tests.WebStore
     public class RetrieveStoreCacheTest
     {
         private ICacheHelper _cacheHelper;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _cacheHelper = new CacheHelper();
+        }
     }
 }
