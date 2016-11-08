@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Runtime.Caching;
 using JET.Services.Interfaces.WebStore;
@@ -45,6 +47,77 @@ namespace JET.Services.Implementations.WebStore
         {
             key = FormatKey(key);
             _cache.Remove(key);
+        }
+
+        public T Cache<T>(string key, List<string> filePathToMonitor, Func<T> fn)
+        {
+            if (_cache[key] != null)
+                return (T)_cache[key];
+
+            T res = fn();
+
+            var policy = new CacheItemPolicy();
+            policy.ChangeMonitors.Add(new HostFileChangeMonitor(filePathToMonitor));
+
+            _cache.Add(key, res, policy);
+
+            return res;
+        }
+
+        public T Cache<T>(string key, int hours, Func<T> fn)
+        {
+            if (_cache[key] != null)
+                return (T)_cache[key];
+
+            T res = fn();
+
+            var policy = new CacheItemPolicy() { AbsoluteExpiration = DateTime.Now.AddHours(hours) };
+
+            _cache.Add(key, res, policy);
+
+            return res;
+        }
+
+        public T GetCacheInHours<T>(string key, int hour, Func<T> func)
+        {
+            key = FormatKey(key);
+            if (_cache.Contains(key))
+            {
+                var ret = (T)_cache.Get(key);
+                var list = ret as IList;
+
+                if (list != null && list.Count > 0)
+                {
+                    return ret;
+                }
+
+                if (ret != null && !ret.GetType().IsGenericType)
+                    return ret;
+            }
+            var result = func();
+            var cacheItemPolicy = new CacheItemPolicy { AbsoluteExpiration = DateTime.Now.AddHours(hour) };
+            _cache.Add(key, result, cacheItemPolicy);
+            return result;
+        }
+
+        public T GetCacheInDays<T>(string key, int days, Func<T> func)
+        {
+            key = FormatKey(key);
+            if (_cache.Contains(key))
+            {
+                var ret = (T)_cache.Get(key);
+                var list = ret as IList;
+                if (list != null && list.Count > 0)
+                {
+                    return ret;
+                }
+                if (ret != null && !ret.GetType().IsGenericType)
+                    return ret;
+            }
+            var result = func();
+            var cacheItemPolicy = new CacheItemPolicy { AbsoluteExpiration = DateTime.Now.AddDays(days) };
+            _cache.Add(key, result, cacheItemPolicy);
+            return result;
         }
     }
 }
