@@ -8,10 +8,10 @@
                 ng-model="searchModel.postCode"
                 type="text"
                 name="postCodeValue"
-                id="postCode" 
+                id="postCode"
                 postcode-validator
                 maxlength="8"
-                minlength="2" 
+                minlength="2"
                 required=""/>
             <div ng-show="getRestaurantForm.$submitted || getRestaurantForm.postCodeValue.$touched">
                 <div ng-show="getRestaurantForm.postCodeValue.$error.required" class="has-error">Please provide your postcode</div>
@@ -21,6 +21,7 @@
             </div>
         </div>
     </fieldset>
+    <br />
     <div>
         <loading-directive></loading-directive>
         <div id="submit">
