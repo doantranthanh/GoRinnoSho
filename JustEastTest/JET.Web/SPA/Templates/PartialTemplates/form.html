@@ -6,7 +6,7 @@
             </label>
             <input ng-model="searchModel.postCode" type="text" name="postCodeValue" id="postCode" maxlength="7" required=""/>
             <div ng-show="getRestaurantForm.$submitted || getRestaurantForm.postCodeValue.$touched">
-                <div ng-show="getRestaurantForm.postCodeValue.$error.required">Please enter provide your postcode</div>
+                <div ng-show="getRestaurantForm.postCodeValue.$error.required" class="form__note has-error">Please provide your postcode</div>
             </div>
         </div>
     </fieldset>

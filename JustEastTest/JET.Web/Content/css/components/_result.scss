@@ -6,6 +6,6 @@ table, th, td {
     border: 1px solid black;
 }
 
-.display-no-result{
+.display-no-result, .form__note has-error{
     color: $error;
 }
