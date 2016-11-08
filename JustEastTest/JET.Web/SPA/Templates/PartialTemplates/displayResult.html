@@ -1,5 +1,5 @@
 ﻿<table ng-show="restaurants.length > 0">
-    <tr ng-repeat="restaurant in restaurants">
+    <tr ng-repeat="restaurant in restaurants | orderBy: '-ratingAverage'">
         <td>Restaurant Name: {{restaurant.name}}</td>
         <td>Rating Average: {{restaurant.ratingAverage}}</td>
         <td>
