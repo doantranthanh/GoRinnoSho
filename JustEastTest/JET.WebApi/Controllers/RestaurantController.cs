@@ -13,7 +13,7 @@ namespace JET.WebApi.Controllers
     [RoutePrefix("api")]
     public class RestaurantController : ApiController
     {
-        private const string JustEastUriAddress = "https://public.je-apis.com/restaurants";
+      
         private readonly ICacheHelper _cacheHelper;
         private readonly IRestaurantHelpers _restaurantHelpers;
         public RestaurantController()
@@ -26,23 +26,25 @@ namespace JET.WebApi.Controllers
         [HttpGet]
         public HttpResponseMessage GetRestaurants(string postcode = "", string cuisine = "", string restaurantName = "")
         {
-            Result restaurantsReturned = null;
+            Result restaurantsReturned;
 
             if (_restaurantHelpers.IsAlreadySubmitted(postcode))
             {
-                _cacheHelper.GetCacheInHours<Result>(CacheKey.GetRestaurantDetail.ToString(), 2, () =>
+                restaurantsReturned = _cacheHelper.GetCacheInHours(CacheKey.GetRestaurantDetail.ToString(), 1, () =>
                 {
-                    restaurantsReturned = GetRestaurantsDetails(postcode, cuisine, restaurantName);
-                    return restaurantsReturned;
+                    var cacheResult = _restaurantHelpers.GetRestaurantsDetails(postcode, cuisine, restaurantName);                
+                    return cacheResult;
                 });
             }
             else
             {
-                _cacheHelper.StoreObjToCacheInHour("SubmittedPostcode", postcode, 2);
-                _cacheHelper.GetCacheInHours<Result>(CacheKey.GetRestaurantDetail.ToString(), 2, () =>
+                _cacheHelper.RemoveCacheObj("SubmittedPostcode");
+                _cacheHelper.StoreObjToCacheInHour("SubmittedPostcode", postcode, 1);
+                _cacheHelper.RemoveCacheObj(CacheKey.GetRestaurantDetail.ToString());
+                restaurantsReturned = _cacheHelper.GetCacheInHours(CacheKey.GetRestaurantDetail.ToString(), 1, () =>
                 {
-                    restaurantsReturned = GetRestaurantsDetails(postcode, cuisine, restaurantName);
-                    return restaurantsReturned;
+                    var cacheResult = _restaurantHelpers.GetRestaurantsDetails(postcode, cuisine, restaurantName);
+                    return cacheResult;
                 });
             }
 
@@ -51,25 +53,6 @@ namespace JET.WebApi.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned.Restaurants);
-        }
-
-        private static Result GetRestaurantsDetails(string postcode, string cuisine, string restaurantName)
-        {
-            Result restaurantsReturned;
-            using (var client = UnityDependencyContainer.GetCurrent().Resolve<IHttpClientService>())
-            {
-                client.SetBaseAddress(JustEastUriAddress);
-                client.ClearDefaultHeader();
-                client.SetAcceptDefaultHeader("application/json");
-                client.AddAuthorizationHeader("Basic", "VGVjaFRlc3RBUEk6dXNlcjI=");
-                client.AddValidRequestHeader("Accept-Tenant", "uk");
-                client.AddValidRequestHeader("Accept-Language", "en-GB");
-                client.AddValidRequestHeader("Accept-Charset", "utf-8");
-                client.AddValidRequestHeader("Host", "public.je-apis.com");
-                restaurantsReturned =
-                    client.GetResultAsyns<Result>("?q=" + postcode + "&c=" + cuisine + "&name=" + restaurantName);
-            }
-            return restaurantsReturned;
         }
     }
 }

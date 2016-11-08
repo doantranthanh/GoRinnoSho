@@ -68,6 +68,10 @@
       <Project>{92df81a8-a583-47dd-bd18-fb6f12d5dbdf}</Project>
       <Name>JET.Services.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JET.UnityDependency\JET.UnityDependency.csproj">
+      <Project>{9c38d246-b15e-4169-876c-de6129745473}</Project>
+      <Name>JET.UnityDependency</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
