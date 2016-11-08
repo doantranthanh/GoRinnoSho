@@ -158,6 +158,7 @@
     <Content Include="SPA\Controllers\errorController.js" />
     <Content Include="SPA\Controllers\restaurantController.js" />
     <Content Include="SPA\Directives\loading.directive.js" />
+    <Content Include="SPA\Directives\postcodeValidator.directive.js" />
     <Content Include="SPA\Modules\common.core.js" />
     <Content Include="SPA\Modules\common.ui.js" />
     <Content Include="SPA\Services\apiService.js" />

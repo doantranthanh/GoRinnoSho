@@ -43,6 +43,7 @@ namespace JET.Web
             string[] spaDirectives =
             {
                 "~/Spa/Directives/loading.directive.js",
+                "~/Spa/Directives/postcodeValidator.directive.js"
             };
 
             string[] spaFilters =
