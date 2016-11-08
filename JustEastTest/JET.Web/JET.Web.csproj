@@ -155,6 +155,7 @@
     <Content Include="Js\lib\jquery.validate.min.js" />
     <Content Include="packages.config" />
     <Content Include="SPA\App\app.js" />
+    <Content Include="SPA\Controllers\errorController.js" />
     <Content Include="SPA\Controllers\restaurantController.js" />
     <Content Include="SPA\Directives\loading.directive.js" />
     <Content Include="SPA\Modules\common.core.js" />
@@ -162,6 +163,7 @@
     <Content Include="SPA\Services\apiService.js" />
     <Content Include="SPA\Services\restaurantService.js" />
     <Content Include="SPA\Templates\detailsV1.html" />
+    <Content Include="SPA\Templates\error.html" />
     <Content Include="SPA\Templates\PartialTemplates\displayResult.html" />
     <Content Include="SPA\Templates\PartialTemplates\form.html" />
     <Content Include="Views\web.config" />

@@ -1,8 +1,9 @@
 ﻿(function (app) {
     'use strict';
 
-    function restaurantController($scope, restaurantService) {
+    function restaurantController($scope, $location, $sessionStorage, restaurantService) {
 
+        $sessionStorage.searchPage = $location.path();
 
         $scope.config = restaurantService.setupConfigApi();
 
@@ -15,12 +16,13 @@
         function getRestaurantDetailsCompleted(response) {
             $scope.loading = false;
             $scope.restaurants = response.data;
-            console.log(response.data);
         }
 
        
         function getRestaurantDetailsFailed(response) {
+            console.log(response.data);
             $scope.loading = false;
+            $location.path("/error");
         }
 
 
@@ -34,5 +36,5 @@
 
     }
 
-    app.controller('restaurantController', ['$scope', 'restaurantService', restaurantController]);
+    app.controller('restaurantController', ['$scope', '$location', '$sessionStorage' ,'restaurantService', restaurantController]);
 })(angular.module('jet'));

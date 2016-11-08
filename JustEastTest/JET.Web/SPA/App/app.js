@@ -9,6 +9,9 @@
           }).when('/restaurants/details/v2', {
               templateUrl: '/Spa/Templates/detailsV2.html',
               controller: 'restaurantControllerV2'
+          }).when('/error', {
+              templateUrl: '/Spa/Templates/error.html',
+              controller: 'errorController'
           }).otherwise({
               redirectTo: '/'
           });

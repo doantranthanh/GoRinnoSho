@@ -7,3 +7,8 @@ table {
 table, th, td {
   border: 1px solid black;
 }
+
+/* line 9, components/_result.scss */
+.display-no-result {
+  color: #d15119;
+}

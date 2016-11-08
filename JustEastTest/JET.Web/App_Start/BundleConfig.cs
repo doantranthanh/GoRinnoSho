@@ -36,7 +36,8 @@ namespace JET.Web
 
             string[] spaControllers =
             {
-                "~/Spa/Controllers/restaurantController.js"
+                "~/Spa/Controllers/restaurantController.js",
+                "~/Spa/Controllers/errorController.js"
             };
 
             string[] spaDirectives =
@@ -77,7 +78,7 @@ namespace JET.Web
 
             string[] mainCssBundles =
             {
-                "~/../Content/css/jet.css"
+                "~/Content/css/jet.css"
             };
 
             bundles.Add(new StyleBundle("~/bundles/jetMain")

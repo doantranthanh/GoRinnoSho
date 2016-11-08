@@ -1,13 +1,15 @@
-﻿<table style="border: 1px;">
+﻿<table ng-show="restaurants.length > 0">
     <tr ng-repeat="restaurant in restaurants">
         <td>Restaurant Name: {{restaurant.name}}</td>
         <td>Rating Average: {{restaurant.ratingAverage}}</td>
-        <td ng-repeat="foodType in restaurant.cuisineTypes">
-            <ul>
-                <li>Food Type: {{foodType.name}}</li>
-               
-            </ul>        
+        <td>
+            Food Types:
+            <ul ng-repeat="foodType in restaurant.cuisineTypes">
+                <li>{{foodType.name}}</li>
+            </ul>
         </td>
     </tr>
 </table>
-
+<div ng-show="restaurants.length == 0" class="display-no-result">
+    Sorry we cannot find the restaurant details. Please contact us on...
+</div>

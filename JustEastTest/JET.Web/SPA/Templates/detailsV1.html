@@ -1,15 +1,3 @@
 ﻿<div ng-include src="'spa/templates/partialtemplates/form.html'"></div>
 <div ng-include src="'spa/templates/partialtemplates/displayResult.html'"></div>
-<table>
-    <tr ng-repeat="restaurant in restaurants">
-        <td>Restaurant Name: {{restaurant.name}}</td>
-        <td>Rating Average: {{restaurant.ratingAverage}}</td>
-        <td ng-repeat="foodType in restaurant.cuisineTypes">
-            <ul>
-                <li>Food Type: {{foodType.name}}</li>
-
-            </ul>
-        </td>
-    </tr>
-</table>
 
