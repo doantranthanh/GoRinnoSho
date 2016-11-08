@@ -1,15 +1,18 @@
 ﻿(function (app) {
     'use strict';
 
-    function productOptionsController($scope, restaurantService, $sessionStorage, $location, $window) {
+    function restaurantController($scope, restaurantService) {
 
 
         $scope.config = restaurantService.setupConfigApi();
+
+        $scope.searchModel = restaurantService.searchModel;
 
         $scope.restaurants = restaurantService.restaurants;
 
 
         function getRestaurantDetailsCompleted(response) {
+            console.log(response.data);
             $scope.restaurants = response.data;
         }
 
@@ -19,14 +22,14 @@
         }
 
 
-        $scope.submit = function (signupForm) {
-            if (signupForm.$valid) {
-                restaurantService.getRestaurantDetails($scope.postCode, $scope.cuisine, $scope.restaurantName, $scope.config, getRestaurantDetailsCompleted, getRestaurantDetailsFailed);
+        $scope.submit = function (getRestaurantForm) {
+            if (getRestaurantForm.$valid) {
+                restaurantService.getRestaurantDetails($scope.searchModel.postCode, $scope.searchModel.cuisine, $scope.searchModel.restaurantName, $scope.config, getRestaurantDetailsCompleted, getRestaurantDetailsFailed);
             }
         };
 
 
     }
 
-    app.controller('restaurantController', ['$scope', 'restaurantService', '$sessionStorage', '$location', '$window', productOptionsController]);
+    app.controller('restaurantController', ['$scope', 'restaurantService', restaurantController]);
 })(angular.module('jet'));

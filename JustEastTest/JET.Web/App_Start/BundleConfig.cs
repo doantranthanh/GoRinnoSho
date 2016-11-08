@@ -33,12 +33,12 @@ namespace JET.Web
 
             string[] spaControllers =
             {
-                 "~/Spa/Controllers/restaurantController.js",
+                "~/Spa/Controllers/restaurantController.js"
             };
 
             string[] spaDirectives =
             {
-
+                "~/Spa/Directvies/loading.directive.js",
             };
 
             string[] spaFilters =

@@ -4,13 +4,14 @@
             <label for="postCode">
                 Postcode
             </label>
-            <input ng-model="postCode" type="text" name="postCodeValue" id="postCode" maxlength="7" required=""/>
+            <input ng-model="searchModel.postCode" type="text" name="postCodeValue" id="postCode" maxlength="7" required=""/>
             <div ng-show="getRestaurantForm.$submitted || getRestaurantForm.postCodeValue.$touched">
                 <div ng-show="getRestaurantForm.postCodeValue.$error.required">Please enter provide your postcode</div>
             </div>
         </div>
     </fieldset>
     <div>
+        <loading-directive></loading-directive>
         <div id="submit">
             <button type="submit">
                 Search

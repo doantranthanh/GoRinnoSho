@@ -5,6 +5,12 @@
 
         var config = {};
 
+        var searchModel = {
+            postCode: '',
+            cuisine: '',
+            restaurantName: ''
+        };
+
         var restaurants = {
            
         };
@@ -18,11 +24,12 @@
             };
         }
 
-        function getRestaurantDetails(postcode,cuisine,restaurantName, inputConfig, completedFunction, failedFunction) {
+        function getRestaurantDetails(postcode, cuisine,restaurantName, inputConfig, completedFunction, failedFunction) {
             apiService.get('/justeatapi/api/restaurant/' + postcode + "/" + cuisine + "/" + restaurantName, inputConfig, completedFunction, failedFunction);
         }
        
         var restaurantServiceObj = {
+            searchModel:searchModel,
             restaurants: restaurants,
             setupConfigApi: setupConfigApi,
             getRestaurantDetails: getRestaurantDetails
