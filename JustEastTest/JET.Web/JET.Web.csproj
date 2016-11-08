@@ -136,6 +136,16 @@
     <Content Include="Js\lib\angular\angular-route.js" />
     <Content Include="Js\lib\angular\angular-sanitize.js" />
     <Content Include="Js\lib\angular\angular.min.js" />
+    <Content Include="Js\lib\jquery-1.10.2.js" />
+    <Content Include="Js\lib\jquery-1.10.2.min.js" />
+    <Content Include="Js\lib\jquery.actual.js" />
+    <Content Include="Js\lib\jquery.actual.min.js" />
+    <Content Include="Js\lib\jquery.cookie.js" />
+    <Content Include="Js\lib\jquery.cookie.min.js" />
+    <Content Include="Js\lib\jquery.unobtrusive-ajax.js" />
+    <Content Include="Js\lib\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Js\lib\jquery.validate.js" />
+    <Content Include="Js\lib\jquery.validate.min.js" />
     <Content Include="packages.config" />
     <Content Include="SPA\App\app.js" />
     <Content Include="SPA\Controllers\restaurantController.js" />

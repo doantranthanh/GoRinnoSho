@@ -10,20 +10,22 @@
 
         $scope.restaurants = restaurantService.restaurants;
 
+        $scope.loading = false;
 
         function getRestaurantDetailsCompleted(response) {
-            console.log(response.data);
+            $scope.loading = false;
             $scope.restaurants = response.data;
         }
 
        
         function getRestaurantDetailsFailed(response) {
-            console.log(response);
+            $scope.loading = false;
         }
 
 
         $scope.submit = function (getRestaurantForm) {
             if (getRestaurantForm.$valid) {
+                $scope.loading = true;
                 restaurantService.getRestaurantDetails($scope.searchModel.postCode, $scope.searchModel.cuisine, $scope.searchModel.restaurantName, $scope.config, getRestaurantDetailsCompleted, getRestaurantDetailsFailed);
             }
         };

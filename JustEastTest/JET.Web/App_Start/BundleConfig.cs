@@ -8,7 +8,10 @@ namespace JET.Web
         {
 
             // Javascript/Jquery and third party library
-            string[] commonJsBundles = { };
+            string[] commonJsBundles =
+            {
+                "~/Js/lib/jquery-1.10.2.min.js"
+            };
 
 
             //Angular JS bundles
@@ -38,7 +41,7 @@ namespace JET.Web
 
             string[] spaDirectives =
             {
-                "~/Spa/Directvies/loading.directive.js",
+                "~/Spa/Directives/loading.directive.js",
             };
 
             string[] spaFilters =
