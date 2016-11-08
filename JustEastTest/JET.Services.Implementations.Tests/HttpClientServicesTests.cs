@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
-using JET.Entities;
+using JET.Entities.POJO;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Interfaces.WebClient;
 using Newtonsoft.Json;

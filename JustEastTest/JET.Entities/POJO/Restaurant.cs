@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JET.Entities
+namespace JET.Entities.POJO
 {
     public class Restaurant
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
-using JET.Entities;
+using JET.Entities.POJO;
 using JET.Services.Interfaces.WebClient;
 using JET.UnityDependency;
 using JET.WebApi.Controllers;

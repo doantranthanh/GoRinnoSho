@@ -1,8 +1,12 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
+using JET.Services.Implementations.Helpers;
 using JET.Services.Implementations.WebClient;
+using JET.Services.Implementations.WebStore;
+using JET.Services.Interfaces.Helper;
 using JET.Services.Interfaces.WebClient;
+using JET.Services.Interfaces.WebStore;
 using JET.UnityDependency;
 using Microsoft.Practices.Unity;
 using Unity.Mvc4;
@@ -33,6 +37,8 @@ namespace JET.WebApi
         public static void RegisterTypes(IUnityContainer container)
         {
             UnityDependencyContainer.GetCurrent().Register<IHttpClientService, HttpClientService>(true);
+            UnityDependencyContainer.GetCurrent().Register<ICacheHelper, CacheHelper>();
+            UnityDependencyContainer.GetCurrent().Register<IRestaurantHelpers, RestaurantHelper>();
         }
     }
 }

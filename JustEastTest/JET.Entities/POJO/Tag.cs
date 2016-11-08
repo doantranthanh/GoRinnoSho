@@ -1,4 +1,4 @@
-﻿namespace JET.Entities
+﻿namespace JET.Entities.POJO
 {
     public class Tag
     {

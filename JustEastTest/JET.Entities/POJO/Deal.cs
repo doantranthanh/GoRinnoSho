@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JET.Entities
+namespace JET.Entities.POJO
 {
     public class Deal
     {
