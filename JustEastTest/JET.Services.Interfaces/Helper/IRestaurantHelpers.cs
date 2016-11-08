@@ -7,5 +7,7 @@ namespace JET.Services.Interfaces.Helper
         bool IsAlreadySubmitted(string postCode);
 
         Result GetRestaurantsDetails(string postcode, string cuisine, string restaurantName);
+
+        bool IsPostCodeValid(string postCode);
     }
 }

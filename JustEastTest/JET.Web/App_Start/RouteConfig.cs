@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace JET.Web.App_Start
+namespace JET.Web
 {
     public class RouteConfig
     {

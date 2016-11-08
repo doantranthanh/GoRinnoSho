@@ -1,10 +1,10 @@
-﻿using System.Net.Http;
-using System.Web.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using JET.Services.Implementations.Helpers;
+using JET.Services.Implementations.Logger;
 using JET.Services.Implementations.WebClient;
 using JET.Services.Implementations.WebStore;
 using JET.Services.Interfaces.Helper;
+using JET.Services.Interfaces.Logger;
 using JET.Services.Interfaces.WebClient;
 using JET.Services.Interfaces.WebStore;
 using JET.UnityDependency;
@@ -39,6 +39,7 @@ namespace JET.WebApi
             UnityDependencyContainer.GetCurrent().Register<IHttpClientService, HttpClientService>(true);
             UnityDependencyContainer.GetCurrent().Register<ICacheHelper, CacheHelper>();
             UnityDependencyContainer.GetCurrent().Register<IRestaurantHelpers, RestaurantHelper>();
+            UnityDependencyContainer.GetCurrent().RegisterType(typeof(ILoggerService<>), typeof(LoggerService<>));
         }
     }
 }
