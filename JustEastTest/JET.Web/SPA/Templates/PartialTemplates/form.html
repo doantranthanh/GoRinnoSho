@@ -11,7 +11,8 @@
                 id="postCode" 
                 postcode-validator
                 maxlength="8"
-                minlength="6" required=""/>
+                minlength="2" 
+                required=""/>
             <div ng-show="getRestaurantForm.$submitted || getRestaurantForm.postCodeValue.$touched">
                 <div ng-show="getRestaurantForm.postCodeValue.$error.required" class="has-error">Please provide your postcode</div>
                 <div ng-messages="getRestaurantForm.postCodeValue.$error" class="has-error">
