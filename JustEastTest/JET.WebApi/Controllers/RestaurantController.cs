@@ -39,9 +39,11 @@ namespace JET.WebApi.Controllers
             };
 
             HttpResponseMessage response;
+            var isPostCodeValid = false;
             try
             {
-                if (_restaurantHelpers.IsPostCodeValid(postcode))
+                isPostCodeValid = _restaurantHelpers.IsPostCodeValid(postcode);
+                if (isPostCodeValid)
                 {
                     if (_restaurantHelpers.IsAlreadySubmitted(postcode))
                     {
@@ -69,11 +71,7 @@ namespace JET.WebApi.Controllers
                                 return cacheResult;
                             });
                     }
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                }
+                }               
                
             }
             catch (Exception ex)
@@ -91,15 +89,21 @@ namespace JET.WebApi.Controllers
                 }
                 else
                 {
-                    if (restaurantsReturned.Restaurants.Any())
+                    if (isPostCodeValid)
                     {
-                        response = Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned.Restaurants);
+                        if (restaurantsReturned.Restaurants.Any())
+                        {
+                            response = Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned.Restaurants);
+                        }
+                        else
+                        {
+                            response = Request.CreateResponse(HttpStatusCode.NotFound, restaurantsReturned.Restaurants);
+                        }
                     }
                     else
                     {
-                        response = Request.CreateResponse(HttpStatusCode.NotFound, restaurantsReturned.Restaurants);
-                    }
-                   
+                        response = Request.CreateResponse(HttpStatusCode.BadGateway);
+                    }                                   
                 }
                
             }
