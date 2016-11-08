@@ -47,7 +47,8 @@ namespace JET.WebApi.Controllers
                 {
                     if (_restaurantHelpers.IsAlreadySubmitted(postcode))
                     {
-                        _logger.Info("Submitted postcode" + postcode);
+                        _logger.Info(string.Format("Submitted postcode {0}",postcode));
+                        _logger.Info("Getting the restaurants from cache");
                         restaurantsReturned = _cacheHelper.GetCacheInHours(CacheKey.GetRestaurantDetail.ToString(), 1,
                             () =>
                             {
@@ -55,11 +56,12 @@ namespace JET.WebApi.Controllers
                                     restaurantName);
                                 return cacheResult;
                             });
+                        _logger.Info("Return the restaurants from cache");
                     }
                     else
                     {
                         _logger.Info("New Submitted postcode" + postcode);
-                        _logger.Info(String.Format("Starting calling JET WebAPI with {0})", postcode));
+                        _logger.Info(String.Format("Starting calling JET WebAPI with {0}", postcode));
                         _cacheHelper.RemoveCacheObj("SubmittedPostcode");
                         _cacheHelper.StoreObjToCacheInHour("SubmittedPostcode", postcode, 1);
                         _cacheHelper.RemoveCacheObj(CacheKey.GetRestaurantDetail.ToString());
@@ -70,6 +72,7 @@ namespace JET.WebApi.Controllers
                                     restaurantName);
                                 return cacheResult;
                             });
+                        _logger.Info(String.Format("Finished calling JET WebAPI with {0}", postcode));
                     }
                 }               
                
@@ -93,16 +96,19 @@ namespace JET.WebApi.Controllers
                     {
                         if (restaurantsReturned.Restaurants.Any())
                         {
+                            _logger.Info(String.Format("Calling GetRestaurants from Web API has a success request with postcode {0}", postcode));
                             response = Request.CreateResponse(HttpStatusCode.OK, restaurantsReturned.Restaurants);
                         }
                         else
                         {
+                            _logger.Info(String.Format("Calling GetRestaurants from Web API has a no results with postcode {0}", postcode));
                             response = Request.CreateResponse(HttpStatusCode.NotFound, restaurantsReturned.Restaurants);
                         }
                     }
                     else
                     {
-                        response = Request.CreateResponse(HttpStatusCode.BadGateway);
+                        _logger.Warn(String.Format("Calling GetRestaurants from Web API has a bad request with postcode {0}", postcode));
+                        response = Request.CreateResponse(HttpStatusCode.BadRequest);
                     }                                   
                 }
                
