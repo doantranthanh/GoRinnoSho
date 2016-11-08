@@ -8,6 +8,14 @@
                 <li>{{foodType.name}}</li>
             </ul>
         </td>
+        <td>
+            <div>
+                Address:  {{restaurant.address}}
+            </div>
+            <div>
+                PostCode: {{restaurant.postcode}}
+            </div>          
+        </td>
     </tr>
 </table>
 <div ng-show="restaurants.length == 0" class="display-no-result">
