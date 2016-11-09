@@ -13,6 +13,8 @@ I also applied TDD during the development process.
 
 * .NET Framework 4.5.1
 * IIS 7
+* Visual Studio 2015 
+* Web Server
 
 Please refer to the following link https://www.asp.net/mvc/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 
