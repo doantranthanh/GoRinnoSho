@@ -1,0 +1,14 @@
+/* line 1, components/_result.scss */
+table {
+  border-collapse: collapse;
+}
+
+/* line 5, components/_result.scss */
+table, th, td {
+  border: 1px solid black;
+}
+
+/* line 9, components/_result.scss */
+.display-no-result, .has-error {
+  color: #d15119;
+}

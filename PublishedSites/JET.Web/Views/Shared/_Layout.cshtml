@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html html lang="en" class="no-js" ng-app="jet">
+<head>
+    <title>Just Eat Testing</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+    <meta content="on" http-equiv="cleartype" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="Just Eat Testing"/>
+    @Styles.Render("~/bundles/jetMain")
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    @RenderSection("header", required: false)
+    <base href="/" />
+</head>
+<body>
+    <!--main body -->
+    <main id="main" role="main" class="main">
+        @RenderBody()
+    </main>
+    @Scripts.Render("~/bundles/application")
+    @Scripts.Render("~/bundles/spa")
+    @Scripts.Render("~/bundles/helpers")
+</body>
+</html>
+
+@RenderSection("masterscript", false)

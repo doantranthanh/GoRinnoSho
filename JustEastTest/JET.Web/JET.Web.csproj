@@ -180,6 +180,7 @@
     <Content Include="Content\css\_settings.scss" />
     <Content Include="Content\css\jet.scss" />
     <Content Include="Content\css\components\_result.scss" />
+    <None Include="Properties\PublishProfiles\JET.Web.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
