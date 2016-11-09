@@ -1,0 +1,169 @@
+{
+	"firstName": "Thanh",
+	"middleName": "Tran",
+	"lastName": "Doan",
+	"birthOfDate" : "1984-07-25TT03:30:00Z",
+	"nationality" : "Vietnamese",
+	"age": 32,
+	"gender": "Male",
+	"currentAddress": "36 Little Roke Avenue, Kenley, London, CR85NG",
+	"currentCity": "London",
+	"currentPostcode": "CR85NG",
+	"phoneNumber": "07563217618",
+	"emailAddress": "tthanh.doan@gmail.com",
+	"currentJob": "Full Stack Web Developer",
+	"currentCompany": "XlnTelecom Limited",
+	"educations":[	
+		{
+			"school" : "University of Southampton, UK",
+			"degree" : "Msc Software Engineering",
+			"fieldOfStudy" : "Software Engineering",
+			"grade"  : "merit",
+			"datesAttended" : "2011-2012"
+		},
+		{
+			"school" : "National Military Academy of Technology, Vietnam",
+			"degree" : "BSc Engineering",
+			"fieldOfStudy" : "Electronic and Electrical; Control Systems and Computational Techniques",
+			"grade"  : "First class",
+			"datesAttended" : "2002-2007"
+		}
+	],
+	"experiences":[
+		{
+			"companyName":"XLN Telecom Ltd",
+			"title":"Full Stack Web Developer",
+			"location":"London,UK",
+			"timeStarted":"Sep-2013",
+			"timeEnded": "",
+			"isCurrentCompany":true
+		},
+		{
+			"companyName":"Metricell Limited",
+			"title":"Software Engineer",
+			"location":"Horsham,UK",
+			"timeStarted":"February-2013",
+			"timeEnded": "August-2013",
+			"isCurrentCompany":false
+		},
+		{
+			"companyName":"Hipt Group",
+			"title":"Software Engineer",
+			"location":"Hanoi,Vietnam",
+			"timeStarted":"October-2010",
+			"timeEnded": "May-2011",
+			"isCurrentCompany":false
+		},
+		{
+			"companyName":"Ericsson Vietnam",
+			"title":"Service Engineer",
+			"location":"Hanoi,Vietnam",
+			"timeStarted":"August-2008",
+			"timeEnded": "April-2010",
+			"isCurrentCompany":false
+		}
+	],
+	"skills":[
+		{
+			"skill": "C#",
+			"yearOfExperience": 4
+		},
+		{
+			"skill": "Javascript",
+			"yearOfExperience": 3
+		},
+		{
+			"skill": "JQuery",
+			"yearOfExperience": 3
+		},
+		{
+			"skill": "CSS",
+			"yearOfExperience": 3
+		}
+		,
+		{
+			"skill": "SCSS",
+			"yearOfExperience": 3
+		},
+		{
+			"skill": "HTML",
+			"yearOfExperience": 3
+		},
+		{
+			"skill": "Java",
+			"yearOfExperience": 2
+		},
+		{
+			"skill": "GitHub",
+			"yearOfExperience": 3
+		},	
+		{
+			"skill": "SQL Server",
+			"yearOfExperience": 3
+		},		
+		{
+			"skill": "TDD",
+			"yearOfExperience": 2
+		}
+	],
+	"technologies":[
+		{
+			"technology": ".NET MVC",
+			"yearOfExperience": 4
+		},
+		{
+			"technology": "SQL Database",
+			"yearOfExperience": 2
+		},
+		{
+			"technology": "Angular JS",
+			"yearOfExperience": 2
+		},
+		{
+			"technology": ".NET Core",
+			"yearOfExperience": 1
+		},
+		{
+			"technology": "Microservices Architecture",
+			"yearOfExperience": 1
+		},
+		{
+			"technology": "AWS",
+			"yearOfExperience": 1
+		}		
+	],
+	"honorsAndAwards":[
+		{
+			"title": "Excellent Youth Leader” and “Excellent Volunteer",
+			"year": "2002"
+		},
+		{
+			"title": "Student of the year awards",
+			"year": "2004,2005,2006"
+		},
+		{
+			"title": "Student of the year awards",
+			"year": "2006"
+		}	
+	],
+	"interests":[
+		{
+			"name": "Kendo"
+		},
+		{
+			"name": "Football"
+		},
+		{
+			"name": "Reading book"
+		},
+		{
+			"name": "PC Games"
+		},
+		{
+			"name": "Chinese Chess"
+		}
+	],
+	"personalInfo":{
+		"mariusStatus": "Married"
+	}
+}
