@@ -25,7 +25,7 @@ I have used and applied Google Maps APIs to our website which you can access to 
 a button called Locate Restaurant next to the . That button will pickup the full address of the restaurant and copies to Search Location bar and return the location of the 
 restaurant.
 
-Secondly, I will not use Web API in order to call a request to your public API. I will implement microservice apps which will be used to make a request 
+Secondly, I will not use Web API in order to call a request directly to your public API. I will implement microservice apps which will be used to make a request 
 and return the result. Basically, there will be 2 console applications which use RabbitMq to communictate to your public API and my web application.
 For example, when user provides postcode and submit the form. A Http request will be made from front-end to web api project. My Web Api project will send a message to 
 a console application which will send a http request to your public API. The returned result will be sent as a message back to the Web Api, the Web Api will listen to 
@@ -60,11 +60,24 @@ a significal redesign of ASP.NET and will be a future framework for building mod
 
 * How would you track down a performance issue in production? 
 
+As you can see, I am using Elmah and NLog in order to star looking at the exceptions. 
+
 * Have you ever had to do this?
+
+I am using daily Elmah and Nlog in our website/ backend/ wcf applications.
 
 ## Question 4 
 
 * How would you improve the JUST EAT APIs that you just used
+
+I found that at the fist time calling to JUST EAT APIs, it will take a quite longer time. But after that, it runs quick. However, in order to 
+make the application running quiker and make the better user experiences, I have implemented a caching mechanism in my application. This mechanism will store
+the resturned result from JUST EAT APIs in cache, it will check the submited postcode is submited or not. If it had been submited, then it would return the 
+cached return result. It it has been not submited then a new HTTP request will be made. It will help my application not need to make many unnecessary HTTP request to 
+your JUST EAT APIs and will make the Users happier.
+
+I am not sure 100% about your source code and how your JUST EAT APIs has been deployed but I would suggest to build it as a microservice system and deploy to the cloud such as
+AWS. Actually, I am using your JustSaying message bus library to communicate between our microservice application on our AWS. Please correct me if you can.
 
 ## Question 5
 
