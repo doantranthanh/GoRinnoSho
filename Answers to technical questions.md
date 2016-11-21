@@ -13,10 +13,10 @@ Please answer the following questions in a markdown file called `Answers to tech
 ## Question 1
 
 * How long did you spend on the coding test?
+
 This is a Single Page Application developed by using MVC framework, Angular JS, and Web Api. It has been built and developed by applying TDD. Therefore, I have spent 3 days and a half on the coding test. You can see its history from my personal github which is at  https://github.com/doantranthanh/GoRinnoSho
   
 * What would you add to your solution if you had more time?
-If I have more time, I would like to build that application by applying Microservices Architecture, ASP.NET Core and will deploy it to AWS.
 
 * If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
@@ -24,6 +24,21 @@ If I have more time, I would like to build that application by applying Microser
 ## Question 2
 
 * What was the most useful feature that was added to the latest version of your chosen language? 
+
+I am using C# at this moment. Also, we are trying to use Microservices and APS.NET core for our projects.  
+
+In terms of C#, there are plenty of new features in the lastest version of C# 6.0 such as 
+	+) Null-Conditional Operator
+	+) Auto-Property Initializers
+	+) Nameof Expressions
+	+) Primary Constructors
+	+) Expression Bodied Functions and Properties
+but for me, I think one of the most important feature comes from C# 5.0 which is Async Feature with two key words async and await. 
+I am using that feature a lot in our backend application.
+
+In terms of framework, ASP .NET Core brings a new open-source and cross-platform framework for apps that are built in Microservices Architecture 
+and are deployed to the clound or run on-premises. Although, ASP.NET Core is still being developed and not yet mature but I belive it will introduce
+a significal redesign of ASP.NET and will be a future framework for building modern cloud application.
 
 ## Question 3
 
