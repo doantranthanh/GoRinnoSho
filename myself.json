@@ -104,6 +104,14 @@
 		{
 			"skill": "TDD",
 			"yearOfExperience": 2
+		},		
+		{
+			"skill": "Rhinomock",
+			"yearOfExperience": 3
+		},		
+		{
+			"skill": "NUnit",
+			"yearOfExperience": 3
 		}
 	],
 	"technologies":[
@@ -130,6 +138,14 @@
 		{
 			"technology": "AWS",
 			"yearOfExperience": 1
+		},
+		{
+			"technology": "Nuget Package",
+			"yearOfExperience": 2
+		},
+		{
+			"technology": "Octopus Automation Deployment",
+			"yearOfExperience": 1
 		}		
 	],
 	"honorsAndAwards":[
@@ -147,21 +163,11 @@
 		}	
 	],
 	"interests":[
-		{
-			"name": "Kendo"
-		},
-		{
-			"name": "Football"
-		},
-		{
-			"name": "Reading book"
-		},
-		{
-			"name": "PC Games"
-		},
-		{
-			"name": "Chinese Chess"
-		}
+		"Kendo",
+		"Football",
+		"Reading book",
+		"PC Games",
+		"Chinese Chess"
 	],
 	"personalInfo":{
 		"mariusStatus": "Married"
