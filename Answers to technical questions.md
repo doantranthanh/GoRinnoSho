@@ -13,11 +13,10 @@ Please answer the following questions in a markdown file called `Answers to tech
 ## Question 1
 
 * How long did you spend on the coding test?
-  I have spent 3 days and a half on the coding test. You can see its history from my personal github which is at  https://github.com/doantranthanh/GoRinnoSho
+This is a Single Page Application developed by using MVC framework, Angular JS, and Web Api. It has been built and developed by applying TDD. Therefore, I have spent 3 days and a half on the coding test. You can see its history from my personal github which is at  https://github.com/doantranthanh/GoRinnoSho
   
 * What would you add to your solution if you had more time?
-
-  If I have more time, I would like to build that application by applying Microservices Architecture, ASP.NET Core and will deploy it to AWS.
+If I have more time, I would like to build that application by applying Microservices Architecture, ASP.NET Core and will deploy it to AWS.
 
 * If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
