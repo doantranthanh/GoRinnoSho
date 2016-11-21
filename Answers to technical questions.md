@@ -14,7 +14,7 @@ Please answer the following questions in a markdown file called `Answers to tech
 
 * How long did you spend on the coding test?
 
-This is a Single Page Application developed by using MVC framework, Angular JS, and Web Api. It has been built and developed by applying TDD. Therefore, I have spent 3 days and a half on the coding test. You can see its history from my personal github which is at  https://github.com/doantranthanh/GoRinnoSho
+This is a Single Page Application developed by using MVC framework, Angular JS, and Web Api. It has been built and developed by applying TDD. Therefore, I have spent 3 days and a half on the coding test. I have tried my best to finish that so I spent my spare time (lunch time, weekend) to work on that. You can see its history from my personal github which is at  https://github.com/doantranthanh/GoRinnoSho
   
 * What would you add to your solution if you had more time?
 
