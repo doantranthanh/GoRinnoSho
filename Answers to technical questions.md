@@ -22,13 +22,12 @@ If I had more time, I would add the following features to my solution.
 
 First of all, I will intergrated the Google Maps APIs (https://developers.google.com/maps/) to the front-end which will be used for searching the location of restaurants. 
 I have used and applied Google Maps APIs to our website which you can access to the following url https://www.xlntelecom.co.uk/wi-fi/hotspot. So in the frontend I will create
-a button called Locate Restaurant next to the . That button will pickup the full address of the restaurant and copies to Search Location bar and return the location of the 
-restaurant.
+a button called Locate Restaurant next to the address details. That button will pickup the full address of the restaurant and show the restaurant on a popup.
 
-Secondly, I will not use Web API in order to call a request directly to your public API. I will implement microservice apps which will be used to make a request 
+Secondly, I will not use Web API in order to make a request directly to your public API. I will implement microservice apps which will be used to make a request 
 and return the result. Basically, there will be 2 console applications which use RabbitMq to communictate to your public API and my web application.
-For example, when user provides postcode and submit the form. A Http request will be made from front-end to web api project. My Web Api project will send a message to 
-a console application which will send a http request to your public API. The returned result will be sent as a message back to the Web Api, the Web Api will listen to 
+For example, when user provides postcode and submit the form. A Http request will be made from front-end to web api project through my apiService.js. My Web Api project will send a message to 
+a console application which will send a http request constructed by the sending message to your public API. The returned result will be sent as a message back to the Web Api, the Web Api listens to 
 the returned message then consumes that message and return the list of restaurants. The list of restaurant will be display on the page. The reason I want to add this feature because
 I want to build a microservice system for my application. That would be better if I can build an application by using ASP.NET Core and bring it to the cloud which is AWS that I am learning.
 
